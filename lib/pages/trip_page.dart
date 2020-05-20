@@ -101,6 +101,7 @@ class _TripPageState extends State<TripPage> {
     print('Album has been shared.');
 
     setState(() {
+      album = updatedAlbum;
       _inSharingApiCall = false;
     });
 
@@ -131,8 +132,13 @@ class _TripPageState extends State<TripPage> {
   }
 
   void _showUrlDialog(BuildContext context) {
-    // TODO(codelab): Implement this method.
-    ToBeImplemented.showMessage();
+    print('This is the shareableUrl:\n${album.shareInfo.shareableUrl}');
+
+    _showShareDialog(
+      context,
+      'Share this URL with anyone. '
+        'Anyone with this URL can access all items.',
+      album.shareInfo.shareableUrl);
   }
 
   void _showShareDialog(BuildContext context, String title, String text) {
